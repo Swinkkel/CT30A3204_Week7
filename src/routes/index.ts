@@ -22,7 +22,7 @@ router.post("/api/user/register", async (req: Request, res: Response) => {
     const newUser = { email, password: hash };
     users.push(newUser);
 
-    res.status(201).json(newUser);
+    res.status(200).json(newUser);
     return
 })
 
