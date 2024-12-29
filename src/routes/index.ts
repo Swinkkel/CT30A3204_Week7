@@ -1,6 +1,7 @@
 import {Request, Response, Router} from "express"
 import bcrypt from "bcrypt"
 import jwt, {JwtPayload} from "jsonwebtoken"
+import { validateToken } from '../middleware/validateToken'
 import { compile } from "morgan"
 
 const router: Router = Router()
@@ -52,6 +53,10 @@ router.post("/api/user/login", async (req: Request, res: Response) => {
 
     res.status(200).json({success: true, token})  
     return
+})
+
+router.get('/api/private', validateToken, (req: Request, res: Response) => {
+    res.status(200).json({message:"This is protected secure route!"});
 })
 
 export default router
