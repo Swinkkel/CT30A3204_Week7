@@ -3,6 +3,9 @@ import path from "path"
 import router from "./src/routes/index"
 import morgan from "morgan"
 import mongoose, { Connection } from 'mongoose'
+import dotenv from "dotenv"
+
+dotenv.config()
 
 const app: Express = express()
 const port = 3000
